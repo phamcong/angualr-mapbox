@@ -1,0 +1,14 @@
+<div class="map-panel panel h-full">
+  <mgl-map *ngIf="option"
+           [style]="option.styleURL"
+           [zoom]="[9]"
+           [center]="[-74.5, 40]">
+    <mgl-geojson-source
+      [id]="option.datasetId"
+      [data]="option.datasetURL"
+      [cluster]="true"
+      [clusterMaxZoom]="14"
+      [clusterRadius]="50"
+    ></mgl-geojson-source>
+  </mgl-map>
+</div>
