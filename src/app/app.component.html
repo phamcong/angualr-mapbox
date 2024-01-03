@@ -2,7 +2,20 @@
   <app-header class="mb--10"></app-header>
   <div class="main-container grid grid-nogutter align-items-start">
     <div class="col-auto mr-2 h-full">
-      <app-preset-panel (onChange)="mapDisplayOption = $event"></app-preset-panel>
+      <p-accordion [activeIndex]="currentStep">
+        <p-accordionTab header="Enter Basic Map Details">
+          <app-preset-panel (onChange)="goToNextStep($event)"></app-preset-panel>
+        </p-accordionTab>
+        <p-accordionTab header="Select Source And Destination">
+          Your content here
+        </p-accordionTab>
+        <p-accordionTab header="Add Flow Bands">
+          Your content here
+        </p-accordionTab>
+        <p-accordionTab header="Define Volume & Template">
+          Your content here
+        </p-accordionTab>
+      </p-accordion>
     </div>
     <div class="col h-full">
       <app-map-panel [option]="mapDisplayOption"></app-map-panel>
