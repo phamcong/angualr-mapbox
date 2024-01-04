@@ -7,8 +7,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import { NgxMapboxGLModule } from "ngx-mapbox-gl";
-import {PanelModule} from "primeng/panel";
-import {AccordionModule} from "primeng/accordion";
+import { PanelModule } from "primeng/panel";
+import { AccordionModule } from "primeng/accordion";
 
 enum TOKEN {
   Priya = 'pk.eyJ1IjoicHJpeWFkaGFyc2hpbmlwIiwiYSI6ImNsb3p3ajJiZzAzeXMycW80bjB1YTgyaGIifQ.xbQPH_XoltuOhT9tGbNXMQ',

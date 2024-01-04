@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {MapDisplayOption} from "./map-panel/map-panel.component";
-import {MainPageSteps} from "./app.constant";
+import { Component } from '@angular/core';
+import { MapDisplayOption } from "./map-panel/map-panel.component";
+import { MainPageSteps } from "./app.constant";
 
 @Component({
   selector: 'app-root',

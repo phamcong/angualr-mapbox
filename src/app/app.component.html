@@ -1,7 +1,7 @@
 <div class="app-container">
   <app-header class="mb--10"></app-header>
   <div class="main-container grid grid-nogutter align-items-start">
-    <div class="col-auto mr-2 h-full">
+    <div class="col-auto mr-2 h-full overflow-y-scroll">
       <p-accordion [activeIndex]="currentStep">
         <p-accordionTab header="Enter Basic Map Details">
           <app-preset-panel (onChange)="goToNextStep($event)"></app-preset-panel>
