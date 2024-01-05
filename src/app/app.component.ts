@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MapDisplayOption } from "./map-panel/map-panel.component";
 
 @Component({
   selector: 'app-root',
@@ -8,5 +7,5 @@ import { MapDisplayOption } from "./map-panel/map-panel.component";
 })
 export class AppComponent {
   title = 'angular-mapbox';
-  mapDisplayOption!: MapDisplayOption;
+  mapDisplayOption: any = null;
 }

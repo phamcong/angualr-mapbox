@@ -1,8 +1,8 @@
 <div class="app-container">
   <app-header class="mb--10"></app-header>
   <div class="main-container grid grid-nogutter align-items-start">
-    <div class="col-auto mr-2 h-full">
-      <app-preset-panel (onChange)="mapDisplayOption = $event"></app-preset-panel>
+    <div class="col-auto mr-2 h-full overflow-y-scroll">
+      <app-preset-panel (mapDisplayOptionChange)="mapDisplayOption = $event"></app-preset-panel>
     </div>
     <div class="col h-full">
       <app-map-panel [option]="mapDisplayOption"></app-map-panel>
