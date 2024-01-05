@@ -1,4 +1,4 @@
-export enum MainPageSteps {
+export enum MapBuildStep {
   BasicMapDetail,
   SelectSourceAndDestination,
   AddFlowBands,

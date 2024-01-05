@@ -1,51 +1,14 @@
-<div class="app-preset-panel panel h-full p-3"
-     [formGroup]="presetForm">
-  <div class="field flex flex-column">
-    <label class="font-bold"
-           for="dataType">Data type</label>
-    <p-dropdown [options]="dataTypeOptions"
-                styleClass="w-full"
-                id="dataType"
-                formControlName="dataType"
-                placeholder="Select data type">
-    </p-dropdown>
-  </div>
-  <div class="field flex flex-column">
-    <label class="font-bold"
-           for="mapType">Map type</label>
-    <p-dropdown [options]="mapTypeOptions"
-                styleClass="w-full"
-                id="mapType"
-                formControlName="mapType"
-                placeholder="Select map type">
-    </p-dropdown>
-  </div>
-  <div class="field flex flex-column">
-    <label class="font-bold"
-           for="dateRange">Date range</label>
-    <p-calendar class="max-w-full"
-                formControlName="dateRange"
-                id="dateRange"
-                selectionMode="range"
-                [inline]="true"
-                [showWeek]="true"></p-calendar>
-  </div>
-  <div class="field flex flex-column">
-    <label class="font-bold"
-           for="styleURL">Style</label>
-    <p-dropdown [options]="styleOptions"
-                [filter]="true"
-                styleClass="w-full"
-                id="styleURL"
-                formControlName="styleURL"
-                placeholder="Select style">
-    </p-dropdown>
-  </div>
-  <div class="grid grid-nogutter justify-content-center">
-    <div class="col-6">
-      <p-button styleClass="w-full justify-content-center"
-                (onClick)="submit()">Submit
-      </p-button>
-    </div>
-  </div>
-</div>
+<p-accordion [activeIndex]="currentStep">
+  <p-accordionTab header="Enter Basic Map Details">
+    <app-basic-map-detail (onChange)="goToNextStep($event)"></app-basic-map-detail>
+  </p-accordionTab>
+  <p-accordionTab header="Select Source And Destination">
+    Your content here
+  </p-accordionTab>
+  <p-accordionTab header="Add Flow Bands">
+    Your content here
+  </p-accordionTab>
+  <p-accordionTab header="Define Volume & Template">
+    Your content here
+  </p-accordionTab>
+</p-accordion>

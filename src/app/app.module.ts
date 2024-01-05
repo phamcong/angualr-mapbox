@@ -7,8 +7,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import { NgxMapboxGLModule } from "ngx-mapbox-gl";
-import { PanelModule } from "primeng/panel";
-import { AccordionModule } from "primeng/accordion";
+import { PrimeNGModule } from "./shared/modules/primeng.module";
+import { PresentPanelModule } from "./preset-panel/preset-panel.module";
 
 enum TOKEN {
   Priya = 'pk.eyJ1IjoicHJpeWFkaGFyc2hpbmlwIiwiYSI6ImNsb3p3ajJiZzAzeXMycW80bjB1YTgyaGIifQ.xbQPH_XoltuOhT9tGbNXMQ',
@@ -18,7 +18,7 @@ enum TOKEN {
 @NgModule({
   declarations: [
     AppComponent,
-    MapPanelComponent
+    MapPanelComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,8 +30,8 @@ enum TOKEN {
     NgxMapboxGLModule.withConfig({
       accessToken: TOKEN.Priya
     }),
-    PanelModule,
-    AccordionModule
+    PrimeNGModule,
+    PresentPanelModule
   ],
   bootstrap: [AppComponent]
 })
