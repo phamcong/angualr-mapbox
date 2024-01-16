@@ -1,11 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { SelectItem } from "primeng/api";
-import { DataType, MapType } from "../types/map-preset.types";
-import { PresetPanelService } from "../preset-panel.service";
-import { orderBy } from "lodash";
+import { DataType, MapType, ShipmentMode } from "../types/map-preset.types";
 import { DropdownModule } from "primeng/dropdown";
 import { CalendarModule } from "primeng/calendar";
+import { RadioButtonModule } from "primeng/radiobutton";
+import { BrowserModule } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-basic-map-detail',
@@ -13,9 +13,11 @@ import { CalendarModule } from "primeng/calendar";
   styleUrl: './basic-map-detail.component.scss',
   standalone: true,
   imports: [
+    BrowserModule,
     ReactiveFormsModule,
     DropdownModule,
     CalendarModule,
+    RadioButtonModule,
   ],
 })
 export class BasicMapDetailComponent implements OnInit {
@@ -25,40 +27,31 @@ export class BasicMapDetailComponent implements OnInit {
     { label: 'Train', value: 'train' },
   ]
   mapTypeOptions: SelectItem[] = [
-    { label: MapType.FLOW_MAP, value: MapType.FLOW_MAP },
-    { label: MapType.FLOW_CAR_MAP, value: MapType.FLOW_CAR_MAP },
-    { label: MapType.COMBINATION_MAP, value: MapType.COMBINATION_MAP },
+    { label: MapType.FLOW, value: MapType.FLOW },
+    { label: MapType.PIE, value: MapType.PIE },
+    { label: MapType.COMBINATION, value: MapType.COMBINATION },
+    { label: MapType.DATA_FLOW, value: MapType.DATA_FLOW },
   ]
-  styleOptions: SelectItem[] = []
 
   @Output() onChange = new EventEmitter<any>();
 
   constructor(
     private readonly fb: FormBuilder,
-    private readonly presetPanelService: PresetPanelService
   ) {
     this.presetForm = this.fb.group({
+      fromDate: new FormControl<Date | null>(null),
+      endDate: new FormControl<Date | null>(null),
+      shipmentMode: new FormControl<ShipmentMode>(ShipmentMode.START_DATE),
       dataType: new FormControl<DataType>(DataType.CAR),
-      mapType: new FormControl<MapType>(MapType.FLOW_MAP),
-      dateRange: new FormControl<Date[]>([]),
-      styleURL: new FormControl<string | null>(null),
+      mapType: new FormControl<MapType>(MapType.FLOW),
     })
   }
 
-  ngOnInit(): void {
-    this.presetPanelService.getStyles().subscribe(styles => {
-      this.styleOptions = orderBy(styles, 'styleName').map(style => ({
-        label: style.styleName,
-        value: style.styleURL
-      }))
-    })
+  ngOnInit(): void {}
+
+  onNext(): void {
+    this.onChange.emit(this.presetForm.value);
   }
 
-  submit(): void {
-    this.onChange.emit({
-      styleURL: this.presetForm.value.styleURL,
-      datasetId: 'railroutes',
-      datasetURL: 'assets/data/sample-dataset.json'
-    })
-  }
+  protected readonly ShipmentMode = ShipmentMode;
 }

@@ -6,6 +6,7 @@ import { AccordionModule } from "primeng/accordion";
 import { MapBuildStep } from "../app.constant";
 import { MapDisplayOption } from "../map-panel/map-panel.component";
 import { BasicMapDetailComponent } from "./basic-map-detail/basic-map-detail.component";
+import { CreateMapOptions, defaultCreateMapOptions } from "./types/map-preset.types";
 
 @Component({
   selector: 'app-preset-panel',
@@ -25,7 +26,10 @@ export class PresetPanelComponent {
   @Output()
   mapDisplayOptionChange: EventEmitter<MapDisplayOption> = new EventEmitter<MapDisplayOption>();
 
-  goToNextStep(e: any) {
+  creationMapPreset: CreateMapOptions = defaultCreateMapOptions;
+
+  onSubmitBasicDetail(e: any) {
+    Object.assign(this.creationMapPreset, e);
     this.currentStep = MapBuildStep.SelectSourceAndDestination;
     this.mapDisplayOptionChange.emit(e);
   }

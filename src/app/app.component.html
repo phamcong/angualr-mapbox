@@ -1,7 +1,7 @@
 <div class="app-container">
   <app-header class="mb--10"></app-header>
   <div class="main-container grid grid-nogutter align-items-start">
-    <div class="col-auto mr-2 h-full overflow-y-scroll">
+    <div class="col-auto mr-2 h-full overflow-y-scroll" [style.width.px]="350">
       <app-preset-panel (mapDisplayOptionChange)="mapDisplayOption = $event"></app-preset-panel>
     </div>
     <div class="col h-full">

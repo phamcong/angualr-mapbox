@@ -1,51 +1,60 @@
-<div class="app-basic-map-detail panel h-full p-3"
+<div class="app-basic-map-detail h-full flex flex-column gap-3"
      [formGroup]="presetForm">
-  <div class="field flex flex-column">
-    <label class="font-bold"
-           for="dataType">Data type</label>
-    <p-dropdown [options]="dataTypeOptions"
-                styleClass="w-full"
-                id="dataType"
-                formControlName="dataType"
-                placeholder="Select data type">
-    </p-dropdown>
-  </div>
-  <div class="field flex flex-column">
-    <label class="font-bold"
-           for="mapType">Map type</label>
-    <p-dropdown [options]="mapTypeOptions"
-                styleClass="w-full"
-                id="mapType"
-                formControlName="mapType"
-                placeholder="Select map type">
-    </p-dropdown>
-  </div>
-  <div class="field flex flex-column">
-    <label class="font-bold"
-           for="dateRange">Date range</label>
-    <p-calendar class="max-w-full"
-                formControlName="dateRange"
-                id="dateRange"
-                selectionMode="range"
-                [inline]="true"
-                [showWeek]="true"></p-calendar>
-  </div>
-  <div class="field flex flex-column">
-    <label class="font-bold"
-           for="styleURL">Style</label>
-    <p-dropdown [options]="styleOptions"
-                [filter]="true"
-                styleClass="w-full"
-                id="styleURL"
-                formControlName="styleURL"
-                placeholder="Select style">
-    </p-dropdown>
-  </div>
-  <div class="grid grid-nogutter justify-content-center">
-    <div class="col-6">
-      <p-button styleClass="w-full justify-content-center"
-                (onClick)="submit()">Submit
-      </p-button>
+  <label class="font-bold">Select Date Range of TFA Shipments</label>
+  <p-calendar formControlName="fromDate"
+              placeholder="Form date"
+              appendTo="body"
+              [showIcon]="true"></p-calendar>
+  <p-calendar formControlName="endDate"
+              placeholder="End date"
+              appendTo="body"
+              [showIcon]="true"></p-calendar>
+  <div class="flex flex-wrap gap-2 flex-column">
+    <div class="flex align-items-start flex-row">
+      <p-radioButton [value]="ShipmentMode.START_DATE"
+                     formControlName="shipmentMode"
+                     [inputId]="ShipmentMode.START_DATE"></p-radioButton>
+      <div class="ml-2 flex flex-column gap-2">
+        <label>By Shipment Start Date</label>
+        <span class="text-sm opacity-70">Shipment RELEASED or INTERMODEL RECEIVED during the time frame</span>
+      </div>
+    </div>
+
+    <div class="flex align-items-start flex-row">
+      <p-radioButton [value]="ShipmentMode.END_DATE"
+                     formControlName="shipmentMode"
+                     [inputId]="ShipmentMode.END_DATE"></p-radioButton>
+      <div class="ml-2 flex flex-column gap-2">
+        <label>By Shipment End Date</label>
+        <span class="text-sm opacity-70">Shipment DELIVERED or INTERMODEL RECEIVED during the time frame</span>
+      </div>
     </div>
   </div>
+  <div class="flex flex-wrap flex-column gap-2">
+    <label class="font-bold">Data type</label>
+    <div class="flex gap-3">
+      <div class="flex align-items-center flex-row"
+           *ngFor="let option of dataTypeOptions">
+        <p-radioButton [value]="option.value"
+                       formControlName="dataType"
+                       [inputId]="option.value"></p-radioButton>
+        <label [for]="option.value"
+               class="ml-2">{{ option.label }}</label>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-wrap flex-column gap-2">
+    <label class="font-bold">Map type</label>
+    <div class="flex align-items-center"
+         *ngFor="let option of mapTypeOptions">
+      <p-radioButton [value]="option.value"
+                     formControlName="dataType"
+                     [inputId]="option.value"></p-radioButton>
+      <label [for]="option.value"
+             class="ml-2">{{ option.label }}</label>
+    </div>
+  </div>
+  <p-button styleClass="btn-main w-full mt-3"
+            (onClick)="onNext()">Next
+  </p-button>
 </div>
