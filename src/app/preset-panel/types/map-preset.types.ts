@@ -19,12 +19,13 @@ export interface CreateMapOptions {
   fromDate?: Date,
   endDate?: Date,
   shipmentMode: ShipmentMode,
-  dataType: DataType,
-  mapType: MapType,
+
+}
+export enum AssignUserGroup {
+  ALL = 'All',
 }
 
-export const defaultCreateMapOptions: CreateMapOptions = {
-  shipmentMode: ShipmentMode.START_DATE,
-  dataType: DataType.CAR,
-  mapType: MapType.FLOW
+export interface MapPreset {
+  dataType: DataType,
+  mapType: MapType,
 }

@@ -1,14 +1,16 @@
 <p-accordion [activeIndex]="currentStep">
   <p-accordionTab header="Enter Basic Map Details">
-    <app-basic-map-detail (onChange)="onSubmitBasicDetail($event)"></app-basic-map-detail>
+    <app-basic-map-detail
+      (onChange)="goToNextStep($event, MapBuildStep.SelectSourceAndDestination)"></app-basic-map-detail>
   </p-accordionTab>
   <p-accordionTab header="Select Source And Destination">
-    Your content here
+    <app-select-source-destination
+      (onChange)="goToNextStep($event, MapBuildStep.AddFlowBands)"></app-select-source-destination>
   </p-accordionTab>
   <p-accordionTab header="Add Flow Bands">
-    Your content here
+    Your content here22
   </p-accordionTab>
   <p-accordionTab header="Define Volume & Template">
-    Your content here
+    Your content here33
   </p-accordionTab>
 </p-accordion>
