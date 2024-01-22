@@ -9,6 +9,10 @@ export enum MapType {
   COMBINATION_MAP = 'Combination map'
 }
 
+export enum AssignUserGroup {
+  ALL = 'All',
+}
+
 export interface MapPreset {
   dataType: DataType,
   mapType: MapType,

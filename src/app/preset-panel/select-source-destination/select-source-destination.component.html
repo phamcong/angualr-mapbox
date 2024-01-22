@@ -1,0 +1,67 @@
+<div class="app-select-source-destination panel h-full p-3"
+     [formGroup]="sourceAndDestinationForm">
+  <div class="field flex flex-column">
+    <label class="font-bold"
+           for="dataType">Enter Map Name</label>
+    <input type="text" pInputText formControlName="mapName"/>
+  </div>
+  <div class="field flex flex-column">
+    <label class="font-bold">How Do You Want to Create Your Map?</label>
+    <div class="flex flex-wrap gap-3">
+      <div class="flex align-items-center">
+        <p-radioButton name="mapType" value="0" formControlName="mapType"></p-radioButton>
+        <label class="ml-2">Create a map from Scratch</label>
+      </div>
+
+      <div class="flex align-items-center">
+        <p-radioButton name="mapType" value="1" formControlName="mapType"></p-radioButton>
+        <label class="ml-2">Copy from an Existing Map</label>
+      </div>
+    </div>
+  </div>
+  <div class="field flex flex-column">
+    <label class="font-bold"
+           >Assign User Group</label>
+    <p-dropdown styleClass="w-full" [options]="assignedUserGroupList" formControlName="assignUserGroup"></p-dropdown>
+  </div>
+
+  <div class="field flex flex-column">
+    <label class="font-bold"
+           >Is This A Private Map?</label>
+    <div class="flex flex-wrap gap-3">
+      <div class="flex align-items-center">
+        <p-radioButton name="isPrivateMap" value="1" formControlName="isPrivateMap"></p-radioButton>
+        <label class="ml-2">Yes</label>
+      </div>
+
+      <div class="flex align-items-center">
+        <p-radioButton name="isPrivateMap" value="0" formControlName="isPrivateMap"></p-radioButton>
+        <label class="ml-2">No</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="field flex flex-column">
+    <label class="font-bold"
+           for="permanentMap">Is This A Permanent Map?</label>
+    <div class="flex flex-wrap gap-3">
+      <div class="flex align-items-center">
+        <p-radioButton name="isPermanentMap" value="1" formControlName="isPermanentMap"></p-radioButton>
+        <label class="ml-2">Yes</label>
+      </div>
+
+      <div class="flex align-items-center">
+        <p-radioButton name="isPermanentMap" value="0" formControlName="isPermanentMap"></p-radioButton>
+        <label class="ml-2">No</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-nogutter justify-content-center">
+    <div class="col-6">
+      <p-button styleClass="w-full justify-content-center"
+                (onClick)="submit()">Submit
+      </p-button>
+    </div>
+  </div>
+</div>
